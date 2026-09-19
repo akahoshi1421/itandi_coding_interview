@@ -1,58 +1,66 @@
 {
-  "name": "@itandi/frontend",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "biome": "biome check",
-    "build": "next build",
-    "dev": "next dev",
-    "eslint": "eslint --max-warnings 0",
-    "start": "next start",
-    "tsc": "tsc",
-    "format": "oxfmt",
-    "prepare": "cd .. && husky frontend/.husky"
-  },
-  "dependencies": {
-    "next": "16.3.2",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.5.10",
-    "@eslint/compat": "2.1.0",
-    "@types/node": "26.2.0",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.5",
-    "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "10.9.0",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.1.1",
-    "eslint-plugin-sort": "4.0.0",
-    "globals": "17.11.0",
-    "husky": "9.1.7",
-    "lint-staged": "17.5.1",
-    "oxfmt": "0.68.0",
-    "typescript": "npm:@typescript/typescript6@6.0.2",
-    "typescript-eslint": "8.67.0",
-    "typescript7": "npm:typescript@7.0.2"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "oxfmt",
-      "pnpm run eslint",
-      "bash -c tsc"
-    ],
-    "*.{json,md}": "oxfmt"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.7.0"
-    },
-    "runtime": {
-      "name": "node",
-      "version": "24.17.0"
-    }
-  }
+	"name": "@itandi/frontend",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"biome": "biome check",
+		"build": "next build",
+		"build-storybook": "storybook build",
+		"dev": "next dev",
+		"eslint": "eslint --max-warnings 0",
+		"prepare": "cd .. && husky frontend/.husky",
+		"start": "next start",
+		"storybook": "storybook dev -p 6006",
+		"tsc": "tsc"
+	},
+	"lint-staged": {
+		"*.{ts,tsx}": [
+			"biome check --write",
+			"pnpm run eslint",
+			"bash -c tsc"
+		],
+		"*.json": "biome check --write"
+	},
+	"dependencies": {
+		"next": "16.3.2",
+		"react": "19.2.8",
+		"react-dom": "19.2.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.10",
+		"@chromatic-com/storybook": "5.3.1",
+		"@eslint/compat": "2.1.0",
+		"@storybook/addon-a11y": "10.6.0",
+		"@storybook/addon-docs": "10.6.0",
+		"@storybook/addon-onboarding": "10.6.0",
+		"@storybook/addon-vitest": "10.6.0",
+		"@storybook/nextjs-vite": "10.6.0",
+		"@types/node": "26.2.0",
+		"@types/react": "19.2.18",
+		"@types/react-dom": "19.2.5",
+		"babel-plugin-react-compiler": "1.0.0",
+		"eslint": "10.9.0",
+		"eslint-plugin-react": "7.37.5",
+		"eslint-plugin-react-hooks": "7.1.1",
+		"eslint-plugin-sort": "4.0.0",
+		"eslint-plugin-storybook": "10.6.0",
+		"globals": "17.11.0",
+		"husky": "9.1.7",
+		"lint-staged": "17.5.1",
+		"storybook": "10.6.0",
+		"typescript": "npm:@typescript/typescript6@6.0.2",
+		"typescript-eslint": "8.67.0",
+		"typescript7": "npm:typescript@7.0.2"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "11.7.0"
+		},
+		"runtime": {
+			"name": "node",
+			"version": "24.17.0"
+		}
+	}
 }
