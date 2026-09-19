@@ -9,7 +9,17 @@
 		"dev": "next dev",
 		"eslint": "eslint --max-warnings 0",
 		"start": "next start",
-		"tsc": "tsc"
+		"tsc": "tsc",
+		"format": "oxfmt",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{ts,tsx}": [
+			"oxfmt",
+			"pnpm run eslint",
+			"tsc"
+		],
+		"*.{json}": "oxfmt"
 	},
 	"dependencies": {
 		"next": "16.3.2",
@@ -27,6 +37,9 @@
 		"eslint-plugin-react-hooks": "7.1.1",
 		"eslint-plugin-sort": "4.0.0",
 		"globals": "17.11.0",
+		"husky": "9.1.7",
+		"lint-staged": "17.5.1",
+		"oxfmt": "0.68.0",
 		"typescript": "npm:@typescript/typescript6@6.0.2",
 		"typescript-eslint": "8.67.0",
 		"typescript7": "npm:typescript@7.0.2"
