@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   },
   pageExtensions: ["page.tsx", "page.ts"],
   reactStrictMode: true,
+  reactCompiler: true,
 };
 
 export default nextConfig;
