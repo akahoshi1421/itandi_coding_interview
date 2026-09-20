@@ -17,7 +17,7 @@ type StackProps = {
 };
 
 export function Stack({ children, direction, gapSize, style }: StackProps) {
-	const flexDirection = direction === "horizontal" ? "column" : "row";
+	const flexDirection = direction === "horizontal" ? "row" : "column";
 
 	return (
 		<div
