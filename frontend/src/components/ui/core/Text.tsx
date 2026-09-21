@@ -1,14 +1,6 @@
 import type { CSSProperties, ReactElement } from "react";
 import { COLORS } from "../../../consts/colors";
-
-const FONT_SIZE = {
-	"2xl": "32px",
-	"lg": "14px",
-	"md": "12px",
-	"sm": "10px",
-	"xl": "16px",
-	"xs": "8px"
-} as const;
+import { FONT_SIZE } from "../../../consts/fontSize";
 
 type TextProps = {
 	as?: "p" | "h1" | "h2" | "h3";
