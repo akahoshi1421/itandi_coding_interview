@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { fn } from "storybook/test";
 import { Button } from "./Button";
 import { Stack } from "./Stack";
 
 const meta = {
 	args: {
 		children: "ボタン",
+		onClick: fn(),
 		size: "md",
 		variant: "outline"
 	},

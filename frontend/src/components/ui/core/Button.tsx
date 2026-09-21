@@ -1,4 +1,5 @@
 import type { CSSObject } from "@emotion/react";
+import type { MouseEventHandler } from "react";
 import { COLORS } from "../../../consts/colors";
 import { FONT_SIZE } from "../../../consts/fontSize";
 
@@ -53,11 +54,19 @@ const BUTTON_VARIANT: Record<string, CSSObject> = {
 
 type ButtonProps = {
 	children: string;
+	onClick?: MouseEventHandler<HTMLButtonElement>;
 	size?: "md" | "lg" | "xl";
+	type?: "button" | "submit";
 	variant?: "outline" | "solid" | "plain";
 };
 
-export function Button({ children, variant, size }: ButtonProps) {
+export function Button({
+	children,
+	onClick,
+	variant,
+	type,
+	size
+}: ButtonProps) {
 	return (
 		<button
 			css={[
@@ -65,6 +74,8 @@ export function Button({ children, variant, size }: ButtonProps) {
 				BUTTON_SIZE[size ?? "md"],
 				BUTTON_VARIANT[variant ?? "solid"]
 			]}
+			onClick={onClick}
+			type={type ?? "button"}
 		>
 			{children}
 		</button>
