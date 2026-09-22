@@ -1,11 +1,11 @@
-import type { CSSProperties, LabelHTMLAttributes, ReactElement } from "react";
+import type { CSSProperties, LabelHTMLAttributes, ReactNode } from "react";
 import { COLORS } from "../../../consts/colors";
 import { FONT_SIZE } from "../../../consts/fontSize";
 
 // LabelHTMLAttributes は HTMLAttributes に htmlFor / form を足したものなので p / h1〜h3 にもそのまま使える
 type TextProps = LabelHTMLAttributes<HTMLElement> & {
 	as?: "p" | "label" | "h1" | "h2" | "h3";
-	children: ReactElement | string | string[];
+	children: ReactNode;
 	fontSize?: keyof typeof FONT_SIZE;
 	style?: CSSProperties;
 };

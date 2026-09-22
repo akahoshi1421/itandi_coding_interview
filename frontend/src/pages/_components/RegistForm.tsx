@@ -2,8 +2,8 @@ import { Button } from "../../components/ui/core/Button";
 import { Input } from "../../components/ui/core/Input";
 import { InputDate } from "../../components/ui/core/InputDate";
 import { Stack } from "../../components/ui/core/Stack";
-import { Text } from "../../components/ui/core/Text";
 import { TextArea } from "../../components/ui/core/TextArea";
+import { OneInput } from "./registForm/OneInput";
 
 export function RegistForm() {
 	return (
@@ -18,37 +18,15 @@ export function RegistForm() {
 			}}
 		>
 			<Stack direction="vertical" gapSize="lg" style={{ width: "100%" }}>
-				<Stack
-					direction="horizontal"
-					style={{ alignItems: "center", width: "100%" }}
-				>
-					<Text
-						as="label"
-						fontSize="xl"
-						htmlFor="title"
-						style={{ width: "80px" }}
-					>
-						タイトル:
-					</Text>
+				<OneInput itemId="title" itemTitle="タイトル">
 					<Input
 						id="title"
 						placeholder="TODOタイトル"
 						size="lg"
 						width="calc(100% - 150px)"
 					/>
-				</Stack>
-				<Stack
-					direction="horizontal"
-					style={{ alignItems: "center", width: "100%" }}
-				>
-					<Text
-						as="label"
-						fontSize="xl"
-						htmlFor="content"
-						style={{ width: "80px" }}
-					>
-						内容:
-					</Text>
+				</OneInput>
+				<OneInput itemId="content" itemTitle="内容">
 					<TextArea
 						id="content"
 						placeholder="TODOの内容"
@@ -58,21 +36,10 @@ export function RegistForm() {
 							minWidth: "calc(100% - 150px)"
 						}}
 					/>
-				</Stack>
-				<Stack
-					direction="horizontal"
-					style={{ alignItems: "center", width: "100%" }}
-				>
-					<Text
-						as="label"
-						fontSize="xl"
-						htmlFor="deadline"
-						style={{ width: "80px" }}
-					>
-						期日:
-					</Text>
+				</OneInput>
+				<OneInput itemId="deadline" itemTitle="期日">
 					<InputDate id="deadline" size="lg" width="calc(100% - 150px)" />
-				</Stack>
+				</OneInput>
 			</Stack>
 			<Stack
 				direction="horizontal"
