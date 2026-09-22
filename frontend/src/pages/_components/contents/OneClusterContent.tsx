@@ -1,5 +1,6 @@
 import { Stack } from "../../../components/ui/core/Stack";
 import { Tag } from "../../../components/ui/core/Tag";
+import { Text } from "../../../components/ui/core/Text";
 import { COLORS } from "../../../consts/colors";
 import type { Content } from "../../../types/contents";
 import { getClusterTag } from "../../../utils/getClusterTag";
@@ -31,9 +32,11 @@ export function OneClusterContent({
 					width: "100%"
 				}}
 			>
-				{contents.map((content) => (
-					<OneToDo {...content} key={content.id} />
-				))}
+				{contents.length > 0 ? (
+					contents.map((content) => <OneToDo {...content} key={content.id} />)
+				) : (
+					<Text fontSize="xl">TODOタスクはありません。</Text>
+				)}
 			</Stack>
 		</Stack>
 	);

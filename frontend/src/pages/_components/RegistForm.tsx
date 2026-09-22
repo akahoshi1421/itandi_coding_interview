@@ -14,11 +14,14 @@ export function RegistForm() {
 				background: "white",
 				borderRadius: "10px",
 				padding: "20px",
-				width: "85%"
+				width: "90%"
 			}}
 		>
-			<Stack direction="vertical" gapSize="lg">
-				<Stack direction="horizontal" style={{ alignItems: "center" }}>
+			<Stack direction="vertical" gapSize="lg" style={{ width: "100%" }}>
+				<Stack
+					direction="horizontal"
+					style={{ alignItems: "center", width: "100%" }}
+				>
 					<Text as="label" fontSize="xl" style={{ width: "80px" }}>
 						タイトル:
 					</Text>
@@ -28,7 +31,10 @@ export function RegistForm() {
 						width="calc(100% - 150px)"
 					/>
 				</Stack>
-				<Stack direction="horizontal" style={{ alignItems: "center" }}>
+				<Stack
+					direction="horizontal"
+					style={{ alignItems: "center", width: "100%" }}
+				>
 					<Text as="label" fontSize="xl" style={{ width: "80px" }}>
 						内容:
 					</Text>
@@ -41,15 +47,21 @@ export function RegistForm() {
 						}}
 					/>
 				</Stack>
-				<Stack direction="horizontal" style={{ alignItems: "center" }}>
+				<Stack
+					direction="horizontal"
+					style={{ alignItems: "center", width: "100%" }}
+				>
 					<Text as="label" fontSize="xl" style={{ width: "80px" }}>
 						期日:
 					</Text>
 					<InputDate size="lg" width="calc(100% - 150px)" />
 				</Stack>
 			</Stack>
-			<Stack direction="horizontal" style={{ justifyContent: "flex-end" }}>
-				<Button size="lg" style={{ width: "100px" }} type="submit">
+			<Stack
+				direction="horizontal"
+				style={{ justifyContent: "flex-end", width: "100%" }}
+			>
+				<Button size="lg" style={{ width: "150px" }} type="submit">
 					登録
 				</Button>
 			</Stack>
