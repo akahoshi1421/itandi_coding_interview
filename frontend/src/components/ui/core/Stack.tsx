@@ -22,6 +22,7 @@ export function Stack({ children, direction, gapSize, style }: StackProps) {
 	return (
 		<div
 			style={{
+				alignItems: "flex-start",
 				display: "flex",
 				flexDirection,
 				flexWrap: "wrap",
