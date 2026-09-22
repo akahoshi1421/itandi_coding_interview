@@ -27,11 +27,11 @@ export function OneToDo({
 			style={{
 				background: "white",
 				borderRadius: "20px",
-				height: "400px",
-				minWidth: "300px",
+				height: "250px",
 				overflowY: "scroll",
 				padding: "20px",
-				scrollbarWidth: "none"
+				scrollbarWidth: "none",
+				width: "300px"
 			}}
 		>
 			<Stack

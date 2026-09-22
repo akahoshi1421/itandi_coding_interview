@@ -23,3 +23,5 @@ export type UpdateTODO = {
 	deadline?: DateString;
 	title?: string;
 };
+
+export type GroupedTODO = Record<"high" | "middle" | "low" | "done", TODO[]>;
