@@ -3,15 +3,24 @@ import { format } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
 import type { DateString, NewTODO, TODO } from "../../../types";
 import { db } from "../../../utils";
+import { evaluateAllPriority, evaluatePriority } from "../../../utils/score";
 
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<TODO[]>
 ) {
 	if (req.method === "GET") {
-		res.status(200).json(await db.get());
+		const dateChanged = await db.touchLastPageAccess();
+		const todos = await db.get();
+
+		res
+			.status(200)
+			.json(
+				dateChanged ? await db.save(await evaluateAllPriority(todos)) : todos
+			);
 	} else if (req.method === "POST") {
-		const { content, deadline, priority, title } = req.body as NewTODO;
+		const { content, deadline, title } = req.body as NewTODO;
+		const priority = await evaluatePriority({ content, deadline, title });
 		const nextTodos = (await db.get()).concat({
 			completed: false,
 			content,
