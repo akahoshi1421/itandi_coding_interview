@@ -3,7 +3,7 @@ import type { InputHTMLAttributes } from "react";
 import { COLORS } from "../../../consts/colors";
 import { FONT_SIZE } from "../../../consts/fontSize";
 
-const INPUT_DEFAULT_STYLE: CSSObject = {
+export const INPUT_DEFAULT_STYLE: CSSObject = {
 	"&:focus": {
 		outline: "2px solid",
 		outlineColor: COLORS.blue["700"]
@@ -14,12 +14,12 @@ const INPUT_DEFAULT_STYLE: CSSObject = {
 	outlineColor: COLORS.blue["400"]
 };
 
-const INPUT_INVALID_STYLE: CSSObject = {
+export const INPUT_INVALID_STYLE: CSSObject = {
 	outline: "2px solid",
 	outlineColor: COLORS.red["400"]
 };
 
-const INPUT_SIZE: Record<string, CSSObject> = {
+export const INPUT_SIZE: Record<string, CSSObject> = {
 	"lg": {
 		fontSize: FONT_SIZE.lg,
 		padding: "15px 10px"
