@@ -47,7 +47,7 @@ const BUTTON_VARIANT: Record<string, CSSObject> = {
 	},
 	"solid": {
 		"background": COLORS.blue["600"],
-		"borderWidth": "0",
+		"borderColor": COLORS.blue["600"],
 		color: COLORS.blue["50"]
 	}
 };
