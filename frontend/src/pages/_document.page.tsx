@@ -1,10 +1,11 @@
 import { Head, Html, Main, NextScript } from "next/document";
+import { COLORS } from "../consts/colors";
 
 export default function Document() {
 	return (
 		<Html lang="ja">
 			<Head />
-			<body>
+			<body css={{ background: COLORS.gray["100"], margin: 0, padding: 0 }}>
 				<Main />
 				<NextScript />
 			</body>

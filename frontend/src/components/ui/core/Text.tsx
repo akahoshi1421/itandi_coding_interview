@@ -4,7 +4,7 @@ import { FONT_SIZE } from "../../../consts/fontSize";
 
 type TextProps = {
 	as?: "p" | "h1" | "h2" | "h3";
-	children: ReactElement;
+	children: ReactElement | string;
 	fontSize?: keyof typeof FONT_SIZE;
 	style?: CSSProperties;
 };
