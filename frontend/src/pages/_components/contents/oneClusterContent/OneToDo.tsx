@@ -3,10 +3,10 @@ import { CheckBox } from "../../../../components/ui/core/CheckBox";
 import { Stack } from "../../../../components/ui/core/Stack";
 import { Tag } from "../../../../components/ui/core/Tag";
 import { Text } from "../../../../components/ui/core/Text";
-import type { Content } from "../../../../types/contents";
+import type { TODO } from "../../../../types";
 import { getToDoTagColor } from "../../../../utils/getToDoTagColor";
 
-type OneToDoProps = Content;
+type OneToDoProps = TODO;
 
 export function OneToDo({
 	content,
