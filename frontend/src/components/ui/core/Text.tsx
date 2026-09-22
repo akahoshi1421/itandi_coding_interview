@@ -12,7 +12,8 @@ type TextProps = LabelHTMLAttributes<HTMLElement> & {
 
 const DEFAULT_TEXT_STYLE: CSSProperties = {
 	color: COLORS.gray["900"],
-	fontFamily: "Inter"
+	fontFamily: "Inter",
+	margin: 0
 };
 
 export function Text({ fontSize, style, children, as, ...props }: TextProps) {
