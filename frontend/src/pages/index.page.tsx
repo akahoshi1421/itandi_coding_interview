@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { Stack } from "../components/ui/core/Stack";
+import { RegistForm } from "./_components/RegistForm";
 
 export default function Page() {
 	return (
@@ -11,11 +13,18 @@ export default function Page() {
 				/>
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
 			</Head>
-			<div>
-				<a href="https://corp.itandi.co.jp/">
-					テクノロジーで不動産取引をなめらかにする
-				</a>
-			</div>
+			<Stack
+				direction="vertical"
+				gapSize="2xl"
+				style={{
+					alignItems: "center",
+					justifyContent: "center",
+					margin: "20px 0",
+					width: "100%"
+				}}
+			>
+				<RegistForm />
+			</Stack>
 		</>
 	);
 }
