@@ -1,12 +1,14 @@
+import type { DateString } from ".";
+
 export type Content = {
 	completed: boolean;
 	content: string;
-	createdAt: string;
-	deadline: string;
+	createdAt: DateString;
+	deadline: DateString;
 	id: string;
 	priority: number;
 	title: string;
-	updatedAt: string;
+	updatedAt: DateString;
 };
 
 export type Contents = {

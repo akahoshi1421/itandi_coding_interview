@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
+import { format } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { NewTODO, TODO } from "../../../types";
+import type { DateString, NewTODO, TODO } from "../../../types";
 import { db } from "../../../utils";
 
 export default async function handler(
@@ -10,14 +11,15 @@ export default async function handler(
 	if (req.method === "GET") {
 		res.status(200).json(await db.get());
 	} else if (req.method === "POST") {
-		const { content, title } = req.body as NewTODO;
+		const { content, deadline, title } = req.body as NewTODO;
 		const nextTodos = (await db.get()).concat({
 			completed: false,
 			content,
-			createdAt: new Date().toISOString(),
+			createdAt: format(new Date(), "yyyy/MM/dd") as DateString,
+			deadline,
 			id: crypto.randomUUID(),
 			title,
-			updatedAt: new Date().toISOString()
+			updatedAt: format(new Date(), "yyyy/MM/dd") as DateString
 		});
 
 		res.status(201).json(await db.save(nextTodos));

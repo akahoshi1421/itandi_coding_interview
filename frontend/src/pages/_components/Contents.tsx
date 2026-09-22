@@ -1,7 +1,8 @@
 import { Stack } from "../../components/ui/core/Stack";
+import type { Content } from "../../types/contents";
 import { OneClusterContent } from "./contents/OneClusterContent";
 
-const MOCK = {
+const MOCK: Record<"high" | "middle" | "low" | "done", Content[]> = {
 	done: [
 		{
 			completed: true,

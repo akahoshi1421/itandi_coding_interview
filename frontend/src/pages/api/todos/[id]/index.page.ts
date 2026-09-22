@@ -1,5 +1,6 @@
+import { format } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { UpdateTODO } from "../../../../types";
+import type { DateString, UpdateTODO } from "../../../../types";
 import { db } from "../../../../utils";
 
 export default async function handler(
@@ -22,15 +23,16 @@ export default async function handler(
 		if (index === -1) {
 			res.status(404).end();
 		} else {
-			const { completed, content, title } = req.body as UpdateTODO;
+			const { completed, content, deadline, title } = req.body as UpdateTODO;
 			const todo = todos[index];
 
 			const nextTodos = todos.with(index, {
 				...todos[index],
 				completed: completed ?? todo.completed,
 				content: content ?? todo.content,
+				deadline: deadline ?? todo.deadline,
 				title: title ?? todo.title,
-				updatedAt: new Date().toISOString()
+				updatedAt: format(new Date(), "yyyy/MM/dd") as DateString
 			});
 
 			res.status(200).json(await db.save(nextTodos));
