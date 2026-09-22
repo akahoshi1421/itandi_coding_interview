@@ -34,7 +34,7 @@ export const INPUT_SIZE: Record<string, CSSObject> = {
 	}
 };
 
-type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
 	invalid?: boolean;
 	size?: "md" | "lg" | "xl";
 	width?: string;
