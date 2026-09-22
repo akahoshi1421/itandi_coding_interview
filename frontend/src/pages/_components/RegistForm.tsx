@@ -22,10 +22,16 @@ export function RegistForm() {
 					direction="horizontal"
 					style={{ alignItems: "center", width: "100%" }}
 				>
-					<Text as="label" fontSize="xl" style={{ width: "80px" }}>
+					<Text
+						as="label"
+						fontSize="xl"
+						htmlFor="title"
+						style={{ width: "80px" }}
+					>
 						タイトル:
 					</Text>
 					<Input
+						id="title"
 						placeholder="TODOタイトル"
 						size="lg"
 						width="calc(100% - 150px)"
@@ -35,10 +41,16 @@ export function RegistForm() {
 					direction="horizontal"
 					style={{ alignItems: "center", width: "100%" }}
 				>
-					<Text as="label" fontSize="xl" style={{ width: "80px" }}>
+					<Text
+						as="label"
+						fontSize="xl"
+						htmlFor="content"
+						style={{ width: "80px" }}
+					>
 						内容:
 					</Text>
 					<TextArea
+						id="content"
 						placeholder="TODOの内容"
 						size="lg"
 						style={{
@@ -51,10 +63,15 @@ export function RegistForm() {
 					direction="horizontal"
 					style={{ alignItems: "center", width: "100%" }}
 				>
-					<Text as="label" fontSize="xl" style={{ width: "80px" }}>
+					<Text
+						as="label"
+						fontSize="xl"
+						htmlFor="deadline"
+						style={{ width: "80px" }}
+					>
 						期日:
 					</Text>
-					<InputDate size="lg" width="calc(100% - 150px)" />
+					<InputDate id="deadline" size="lg" width="calc(100% - 150px)" />
 				</Stack>
 			</Stack>
 			<Stack

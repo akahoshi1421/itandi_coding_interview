@@ -13,7 +13,10 @@ export function OneToDo({
 	id,
 	priority,
 	title,
-	completed
+	completed,
+	deadline,
+	createdAt,
+	updatedAt
 }: OneToDoProps) {
 	const tagColor = getToDoTagColor(priority);
 
@@ -46,7 +49,15 @@ export function OneToDo({
 				direction="horizontal"
 				style={{ justifyContent: "flex-end", width: "100%" }}
 			>
-				<Text fontSize="sm">期限: YYYY/MM/DD</Text>
+				<Stack direction="vertical" gapSize="sm">
+					<Text fontSize="md">期限: {deadline}</Text>
+					<Text fontSize="sm" style={{ margin: 0 }}>
+						作成: {createdAt}
+					</Text>
+					<Text fontSize="sm" style={{ margin: 0 }}>
+						最終更新: {updatedAt}
+					</Text>
+				</Stack>
 			</Stack>
 		</Stack>
 	);
