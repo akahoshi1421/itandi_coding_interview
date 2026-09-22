@@ -3,8 +3,8 @@ import { CheckBox } from "../../../../components/ui/core/CheckBox";
 import { Stack } from "../../../../components/ui/core/Stack";
 import { Tag } from "../../../../components/ui/core/Tag";
 import { Text } from "../../../../components/ui/core/Text";
-import { COLORS } from "../../../../consts/colors";
 import type { Content } from "../../../../types/contents";
+import { getToDoTagColor } from "../../../../utils/getToDoTagColor";
 
 type OneToDoProps = Content;
 
@@ -15,6 +15,8 @@ export function OneToDo({
 	title,
 	completed
 }: OneToDoProps) {
+	const tagColor = getToDoTagColor(priority);
+
 	return (
 		<Stack
 			direction="vertical"
@@ -33,9 +35,7 @@ export function OneToDo({
 				direction="horizontal"
 				style={{ justifyContent: "space-between", width: "100%" }}
 			>
-				<Tag
-					colorPalette={COLORS.red["500"]}
-				>{`${completed ? "済" : priority}`}</Tag>
+				<Tag colorPalette={tagColor}>{`${completed ? "済" : priority}`}</Tag>
 				<CheckBox checked={completed} />
 			</Stack>
 			<Link href={`/todos/${id}`}>

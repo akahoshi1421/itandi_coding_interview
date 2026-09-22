@@ -4,9 +4,11 @@ import { InputDate } from "../../../components/ui/core/InputDate";
 import { Stack } from "../../../components/ui/core/Stack";
 import { Tag } from "../../../components/ui/core/Tag";
 import { TextArea } from "../../../components/ui/core/TextArea";
-import { COLORS } from "../../../consts/colors";
+import { getToDoTagColor } from "../../../utils/getToDoTagColor";
 
 export default function Page() {
+	const MOCK = 9.9;
+
 	return (
 		<Stack
 			direction="vertical"
@@ -19,8 +21,8 @@ export default function Page() {
 				style={{ alignItems: "center", width: "100%" }}
 			>
 				<Input size="xl" width="60%" />
-				<Tag colorPalette={COLORS.red["600"]} size="xl">
-					高: 9.9
+				<Tag colorPalette={getToDoTagColor(MOCK)} size="xl">
+					{`${MOCK}`}
 				</Tag>
 			</Stack>
 			<TextArea size="xl" style={{ minHeight: "250px", width: "80%" }} />

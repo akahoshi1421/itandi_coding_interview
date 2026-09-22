@@ -8,7 +8,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 9.4,
+			priority: 0,
 			title: "PRのレビュー対応"
 		},
 		{
@@ -16,7 +16,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 8.8,
+			priority: 0,
 			title: "月次の請求書送付"
 		},
 		{
@@ -24,7 +24,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 8.1,
+			priority: 0,
 			title: "ライブラリの脆弱性対応"
 		},
 		{
@@ -32,7 +32,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 6.6,
+			priority: 0,
 			title: "1on1の日程調整"
 		},
 		{
@@ -40,7 +40,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 5.9,
+			priority: 0,
 			title: "リリースノート作成"
 		},
 		{
@@ -48,7 +48,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 5.2,
+			priority: 0,
 			title: "CIの実行時間短縮"
 		},
 		{
@@ -56,7 +56,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 4.5,
+			priority: 0,
 			title: "会議室の予約"
 		},
 		{
@@ -64,7 +64,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 3.4,
+			priority: 0,
 			title: "チームランチの店決め"
 		},
 		{
@@ -72,7 +72,7 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 2.7,
+			priority: 0,
 			title: "不要なメールの整理"
 		},
 		{
@@ -80,91 +80,91 @@ const MOCK = {
 			content:
 				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
 			id: crypto.randomUUID(),
-			priority: 1.8,
+			priority: 0,
 			title: "名刺の発注"
 		}
 	],
 	high: [
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 9.7,
-		// 	title: "ほげ"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 9.2,
-		// 	title: "ふが"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 9.1,
-		// 	title: "ふが"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 8.9,
-		// 	title: "本番障害の一次対応"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 8.6,
-		// 	title: "決算資料の提出"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 8.3,
-		// 	title: "契約書の押印"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 7.9,
-		// 	title: "採用面接の準備"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 7.6,
-		// 	title: "サーバー証明書の更新"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 7.3,
-		// 	title: "顧客への謝罪連絡"
-		// },
-		// {
-		// 	completed: false,
-		// 	content:
-		// 		"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
-		// 	id: crypto.randomUUID(),
-		// 	priority: 7.0,
-		// 	title: "週次レポート作成"
-		// }
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 9.7,
+			title: "ほげ"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 9.2,
+			title: "ふが"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 9.1,
+			title: "ふが"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 8.9,
+			title: "本番障害の一次対応"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 8.6,
+			title: "決算資料の提出"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 8.3,
+			title: "契約書の押印"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 7.9,
+			title: "採用面接の準備"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 7.6,
+			title: "サーバー証明書の更新"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 7.3,
+			title: "顧客への謝罪連絡"
+		},
+		{
+			completed: false,
+			content:
+				"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容",
+			id: crypto.randomUUID(),
+			priority: 7.0,
+			title: "週次レポート作成"
+		}
 	],
 	low: [
 		{
