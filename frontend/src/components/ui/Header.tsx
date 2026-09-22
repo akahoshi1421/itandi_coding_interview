@@ -19,7 +19,7 @@ export function Header() {
 				style={{
 					background: COLORS.blue["200"],
 					padding: "10px",
-					width: "100vw"
+					width: "100%"
 				}}
 			>
 				<Link css={{ textDecoration: "none" }} href="/">
