@@ -1,1 +1,125 @@
-{ "lastPageAccess": "2026/09/23", "todos": [] }
+{
+	"lastPageAccess": "2026/09/23",
+	"todos": [
+		{
+			"completed": false,
+			"content": "決済APIが全断しており顧客からの問い合わせが殺到中。原因の切り分けと復旧を最優先で行う",
+			"createdAt": "2026/09/05",
+			"deadline": "2026/10/18",
+			"id": "4818c65f-c1d0-4464-8cb7-d7f06f37673e",
+			"priority": 9.7,
+			"title": "本番障害の一次対応",
+			"updatedAt": "2026/09/05"
+		},
+		{
+			"completed": false,
+			"content": "今週金曜が締切の決算資料を経理に提出する。数字の最終確認がまだ",
+			"createdAt": "2026/08/22",
+			"deadline": "2026/10/08",
+			"id": "a75f5092-e44d-4315-857f-dc872105548c",
+			"priority": 9.2,
+			"title": "決算資料の提出",
+			"updatedAt": "2026/08/24"
+		},
+		{
+			"completed": false,
+			"content": "取引先との契約書に押印して返送する。先方が着手を待っている",
+			"createdAt": "2026/08/14",
+			"deadline": "2026/10/10",
+			"id": "3ae0428f-5b13-4f3c-b830-f3b4c2f8f7f6",
+			"priority": 9.1,
+			"title": "契約書の押印",
+			"updatedAt": "2026/08/15"
+		},
+		{
+			"completed": false,
+			"content": "来週の定例までに新機能の設計書に目を通し、懸念点をコメントで残す",
+			"createdAt": "2026/08/20",
+			"deadline": "2026/10/15",
+			"id": "1d52d9b4-52fe-4f76-965f-67009a6d2756",
+			"priority": 6.8,
+			"title": "設計書のレビュー",
+			"updatedAt": "2026/08/21"
+		},
+		{
+			"completed": false,
+			"content": "セキュリティアドバイザリが出ているライブラリを更新し、テストが通ることを確認する",
+			"createdAt": "2026/08/16",
+			"deadline": "2026/10/08",
+			"id": "e0883d94-5784-40ac-aac4-add631ac82f1",
+			"priority": 6.5,
+			"title": "依存パッケージの更新",
+			"updatedAt": "2026/08/17"
+		},
+		{
+			"completed": false,
+			"content": "今日の定例で決まった内容と担当者をまとめてチームに共有する",
+			"createdAt": "2026/08/19",
+			"deadline": "2026/10/17",
+			"id": "aa26e25a-17f0-4892-bca7-e72e4e46cef2",
+			"priority": 6.1,
+			"title": "定例MTGの議事録",
+			"updatedAt": "2026/08/20"
+		},
+		{
+			"completed": false,
+			"content": "溜まった書類を整理して、モニター周りを拭く",
+			"createdAt": "2026/09/16",
+			"deadline": "2026/10/21",
+			"id": "77d8449a-ec52-4660-b523-ea4d0f0f1113",
+			"priority": 3.9,
+			"title": "デスク周りの掃除",
+			"updatedAt": "2026/09/16"
+		},
+		{
+			"completed": false,
+			"content": "積読になっているReactの本を1章ずつ読み進める",
+			"createdAt": "2026/09/20",
+			"deadline": "2026/09/30",
+			"id": "7b0f34e9-12cb-41f6-af3e-573bc276761f",
+			"priority": 3.5,
+			"title": "技術書を読む",
+			"updatedAt": "2026/09/21"
+		},
+		{
+			"completed": false,
+			"content": "セットアップ手順に誤字がいくつかあるので直しておく",
+			"createdAt": "2026/09/17",
+			"deadline": "2026/10/06",
+			"id": "74e0aee3-a426-4475-bfdb-6e86d681c809",
+			"priority": 3.2,
+			"title": "READMEの誤字修正",
+			"updatedAt": "2026/09/20"
+		},
+		{
+			"completed": true,
+			"content": "レビューで指摘された命名とテストの追加を反映してマージした",
+			"createdAt": "2026/08/23",
+			"deadline": "2026/10/08",
+			"id": "add08038-0659-446e-b4e2-10f85f8dc841",
+			"priority": 0,
+			"title": "PRのレビュー対応",
+			"updatedAt": "2026/08/26"
+		},
+		{
+			"completed": true,
+			"content": "先月分の請求書を作成して取引先に送付済み",
+			"createdAt": "2026/08/19",
+			"deadline": "2026/09/29",
+			"id": "2cea9324-f2af-4708-b4e7-94f8f1199c45",
+			"priority": 0,
+			"title": "月次の請求書送付",
+			"updatedAt": "2026/08/20"
+		},
+		{
+			"completed": true,
+			"content": "報告のあった脆弱性のパッチ版に更新し、本番へ反映した",
+			"createdAt": "2026/08/19",
+			"deadline": "2026/10/14",
+			"id": "3135ed5d-ace4-41fa-a992-2742e8e6da50",
+			"priority": 0,
+			"title": "ライブラリの脆弱性対応",
+			"updatedAt": "2026/08/22"
+		}
+	]
+}

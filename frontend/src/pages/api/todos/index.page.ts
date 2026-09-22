@@ -1,13 +1,14 @@
 import crypto from "node:crypto";
 import { format } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { DateString, NewTODO, TODO } from "../../../types";
+import type { DateString, GroupedTODO, NewTODO, TODO } from "../../../types";
 import { db } from "../../../utils";
+import { groupTodos } from "../../../utils/groupTodos";
 import { evaluateAllPriority, evaluatePriority } from "../../../utils/score";
 
 export default async function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<TODO[]>
+	res: NextApiResponse<GroupedTODO | TODO[]>
 ) {
 	if (req.method === "GET") {
 		const dateChanged = await db.touchLastPageAccess();
@@ -16,7 +17,9 @@ export default async function handler(
 		res
 			.status(200)
 			.json(
-				dateChanged ? await db.save(await evaluateAllPriority(todos)) : todos
+				groupTodos(
+					dateChanged ? await db.save(await evaluateAllPriority(todos)) : todos
+				)
 			);
 	} else if (req.method === "POST") {
 		const { content, deadline, title } = req.body as NewTODO;
