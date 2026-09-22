@@ -3,7 +3,7 @@ import { COLORS } from "../../../consts/colors";
 import { FONT_SIZE } from "../../../consts/fontSize";
 
 type TextProps = {
-	as?: "p" | "h1" | "h2" | "h3";
+	as?: "p" | "label" | "h1" | "h2" | "h3";
 	children: ReactElement | string;
 	fontSize?: keyof typeof FONT_SIZE;
 	style?: CSSProperties;

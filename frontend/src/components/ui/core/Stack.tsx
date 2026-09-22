@@ -10,7 +10,7 @@ const GAP_SIZE = {
 } as const;
 
 type StackProps = {
-	children: ReactElement;
+	children: ReactElement[] | ReactElement;
 	direction: "vertical" | "horizontal";
 	gapSize?: keyof typeof GAP_SIZE;
 	style?: CSSProperties;
