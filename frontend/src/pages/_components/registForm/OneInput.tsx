@@ -21,7 +21,7 @@ export function OneInput({
 	return (
 		<Stack
 			direction="horizontal"
-			style={{ alignItems: "center", width: "100%" }}
+			style={{ alignItems: "flex-start", width: "100%" }}
 		>
 			<Text as="label" fontSize="xl" htmlFor={itemId} style={{ width: "80px" }}>
 				{itemTitle}:
@@ -29,7 +29,7 @@ export function OneInput({
 			<Stack direction="vertical" gapSize="sm" style={{ width: "90%" }}>
 				{children}
 				{invalid ? (
-					<Text color={COLORS.red["500"]} fontSize="sm">
+					<Text fontSize="sm" style={{ color: COLORS.red["500"] }}>
 						{invalidMessage}
 					</Text>
 				) : (
