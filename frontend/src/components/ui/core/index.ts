@@ -1,9 +1,0 @@
-// biome-ignore-all lint/performance/noBarrelFile: core UIの取り込み口を1つにまとめるため。再エクスポートはコンポーネントのみで、Next.jsのtree shakingで未使用分は落ちる
-export { Button } from "./Button";
-export { CheckBox } from "./CheckBox";
-export { Input } from "./Input";
-export { InputDate } from "./InputDate";
-export { Stack } from "./Stack";
-export { Tag } from "./Tag";
-export { Text } from "./Text";
-export { TextArea } from "./TextArea";
