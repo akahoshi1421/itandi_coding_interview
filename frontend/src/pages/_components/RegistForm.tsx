@@ -4,7 +4,6 @@ import { InputDate } from "../../components/ui/core/InputDate";
 import { Stack } from "../../components/ui/core/Stack";
 import { Text } from "../../components/ui/core/Text";
 import { TextArea } from "../../components/ui/core/TextArea";
-import { COLORS } from "../../consts/colors";
 
 export function RegistForm() {
 	return (
@@ -12,7 +11,7 @@ export function RegistForm() {
 			direction="vertical"
 			gapSize="xl"
 			style={{
-				background: COLORS.blue["300"],
+				background: "white",
 				borderRadius: "10px",
 				padding: "20px",
 				width: "85%"

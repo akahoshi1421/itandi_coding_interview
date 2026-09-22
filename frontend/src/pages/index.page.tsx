@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Stack } from "../components/ui/core/Stack";
+import { Contents } from "./_components/Contents";
 import { RegistForm } from "./_components/RegistForm";
 
 export default function Page() {
@@ -24,6 +25,7 @@ export default function Page() {
 				}}
 			>
 				<RegistForm />
+				<Contents />
 			</Stack>
 		</>
 	);
