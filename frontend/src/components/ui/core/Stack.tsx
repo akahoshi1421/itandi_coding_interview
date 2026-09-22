@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactElement } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 const GAP_SIZE = {
 	"2xl": "20px",
@@ -10,7 +10,7 @@ const GAP_SIZE = {
 } as const;
 
 type StackProps = {
-	children: ReactElement[] | ReactElement;
+	children: ReactNode;
 	direction: "vertical" | "horizontal";
 	gapSize?: keyof typeof GAP_SIZE;
 	style?: CSSProperties;
