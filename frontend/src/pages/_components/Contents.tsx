@@ -1,8 +1,8 @@
 import { Stack } from "../../components/ui/core/Stack";
-import type { Content } from "../../types/contents";
+import type { TODO } from "../../types";
 import { OneClusterContent } from "./contents/OneClusterContent";
 
-const MOCK: Record<"high" | "middle" | "low" | "done", Content[]> = {
+const MOCK: Record<"high" | "middle" | "low" | "done", TODO[]> = {
 	done: [
 		{
 			completed: true,

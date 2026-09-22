@@ -11,13 +11,14 @@ export default async function handler(
 	if (req.method === "GET") {
 		res.status(200).json(await db.get());
 	} else if (req.method === "POST") {
-		const { content, deadline, title } = req.body as NewTODO;
+		const { content, deadline, priority, title } = req.body as NewTODO;
 		const nextTodos = (await db.get()).concat({
 			completed: false,
 			content,
 			createdAt: format(new Date(), "yyyy/MM/dd") as DateString,
 			deadline,
 			id: crypto.randomUUID(),
+			priority,
 			title,
 			updatedAt: format(new Date(), "yyyy/MM/dd") as DateString
 		});

@@ -6,6 +6,7 @@ export type TODO = {
 	createdAt: DateString;
 	deadline: DateString;
 	id: string;
+	priority: number;
 	title: string;
 	updatedAt: DateString;
 };
@@ -13,6 +14,7 @@ export type TODO = {
 export type NewTODO = {
 	content: string;
 	deadline: DateString;
+	priority: number;
 	title: string;
 };
 
@@ -20,5 +22,6 @@ export type UpdateTODO = {
 	completed?: boolean;
 	content?: string;
 	deadline?: DateString;
+	priority?: number;
 	title?: string;
 };

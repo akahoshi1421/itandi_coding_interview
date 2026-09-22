@@ -2,12 +2,12 @@ import { Stack } from "../../../components/ui/core/Stack";
 import { Tag } from "../../../components/ui/core/Tag";
 import { Text } from "../../../components/ui/core/Text";
 import { COLORS } from "../../../consts/colors";
-import type { Content } from "../../../types/contents";
+import type { TODO } from "../../../types";
 import { getClusterTag } from "../../../utils/getClusterTag";
 import { OneToDo } from "./oneClusterContent/OneToDo";
 
 type OneClusterontentProps = {
-	contents: Content[];
+	contents: TODO[];
 	priorityTitle: "高" | "中" | "低" | "完了";
 };
 

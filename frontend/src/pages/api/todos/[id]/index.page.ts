@@ -23,7 +23,8 @@ export default async function handler(
 		if (index === -1) {
 			res.status(404).end();
 		} else {
-			const { completed, content, deadline, title } = req.body as UpdateTODO;
+			const { completed, content, deadline, priority, title } =
+				req.body as UpdateTODO;
 			const todo = todos[index];
 
 			const nextTodos = todos.with(index, {
@@ -31,6 +32,7 @@ export default async function handler(
 				completed: completed ?? todo.completed,
 				content: content ?? todo.content,
 				deadline: deadline ?? todo.deadline,
+				priority: priority ?? todo.priority,
 				title: title ?? todo.title,
 				updatedAt: format(new Date(), "yyyy/MM/dd") as DateString
 			});
