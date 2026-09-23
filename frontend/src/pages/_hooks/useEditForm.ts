@@ -25,11 +25,16 @@ export const useEditForm = (id: string, todo: TODO | undefined) => {
 				return;
 			}
 
-			await updateTodo(id, {
-				content,
-				deadline: format(deadline, "yyyy/MM/dd") as DateString,
-				title
-			});
+			try {
+				await updateTodo(id, {
+					content,
+					deadline: format(deadline, "yyyy/MM/dd") as DateString,
+					title
+				});
+			} catch {
+				return;
+			}
+
 			await router.push("/");
 		},
 		validators: {

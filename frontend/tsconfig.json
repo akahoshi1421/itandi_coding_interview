@@ -16,12 +16,15 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "es2023"
+		"target": "es2023",
+		"types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
 	},
 	"exclude": ["node_modules"],
 	"include": [
 		"next-env.d.ts",
 		".storybook/**/*",
+		"vitest.config.ts",
+		"vitest.setup.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",

@@ -21,11 +21,16 @@ export const useRegistForm = () => {
 				return;
 			}
 
-			await createTodo({
-				content,
-				deadline: format(deadline, "yyyy/MM/dd") as DateString,
-				title
-			});
+			try {
+				await createTodo({
+					content,
+					deadline: format(deadline, "yyyy/MM/dd") as DateString,
+					title
+				});
+			} catch {
+				return;
+			}
+
 			formApi.reset();
 		},
 		validators: {

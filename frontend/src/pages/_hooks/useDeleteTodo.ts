@@ -9,14 +9,19 @@ export const useDeleteTodo = () => {
 	const router = useRouter();
 
 	const deleteTodo = async (id: string) => {
-		await mutateAsync(id, {
-			onError: () => {
-				showToast("削除に失敗しました。", "error");
-			},
-			onSuccess: () => {
-				showToast("削除しました。", "success");
-			}
-		});
+		try {
+			await mutateAsync(id, {
+				onError: () => {
+					showToast("削除に失敗しました。", "error");
+				},
+				onSuccess: () => {
+					showToast("削除しました。", "success");
+				}
+			});
+		} catch {
+			return;
+		}
+
 		await router.push("/");
 	};
 
