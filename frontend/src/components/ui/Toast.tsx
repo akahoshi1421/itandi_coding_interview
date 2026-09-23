@@ -24,27 +24,22 @@ const toastAnimation = keyframes`
 
 export function Toast({ state, message }: ToastProps) {
 	return (
-		<div
-			css={{
+		<Stack
+			direction="vertical"
+			gapSize="xl"
+			style={{
 				animation: `${toastAnimation} 3s ease-in`,
+				background: COLORS[state === "success" ? "green" : "red"]["500"],
+				borderRadius: "10px",
 				bottom: "-100px",
+				padding: "10px 20px",
 				position: "fixed",
 				right: "20px"
 			}}
 		>
-			<Stack
-				direction="vertical"
-				gapSize="xl"
-				style={{
-					background: COLORS[state === "success" ? "green" : "red"]["500"],
-					borderRadius: "10px",
-					padding: "10px 20px"
-				}}
-			>
-				<Text fontSize="lg" style={{ color: "white" }}>
-					{message}
-				</Text>
-			</Stack>
-		</div>
+			<Text fontSize="lg" style={{ color: "white" }}>
+				{message}
+			</Text>
+		</Stack>
 	);
 }
