@@ -1,7 +1,7 @@
-import { atom } from "jotai";
+import { atom, getDefaultStore } from "jotai";
 import { atomWithMutation, atomWithQuery } from "jotai-tanstack-query";
 import { todosApi } from "../../api/todos";
-import type { TODO } from "../../types";
+import type { TODO, UpdateTODO } from "../../types";
 import { groupTodos } from "../../utils/groupTodos";
 
 export const TODOS_QUERY_KEY = ["todos"] as const;
@@ -11,34 +11,46 @@ const todosQueryAtom = atomWithQuery(() => ({
 	queryKey: TODOS_QUERY_KEY
 }));
 
+// 成功したら戻り値の1件を表示用 atom に反映する(一覧の再取得はしない)
+// atomWithMutation の onSuccess からは set が使えないので、Provider なしで使っている default store に直接書く
+const upsertTodo = (todo: TODO) => {
+	getDefaultStore().set(todosAtom, todo);
+};
+
 export const createTodoAtom = atomWithMutation(() => ({
-	mutationFn: todosApi.create
+	mutationFn: todosApi.create,
+	onSuccess: upsertTodo
 }));
 
-// POST で増えた分。サーバーからの再取得に含まれたものは表示時に除外する
-const addedTodosAtom = atom<TODO[]>([]);
+export const updateTodoAtom = atomWithMutation(() => ({
+	mutationFn: ({ id, todo }: { id: string; todo: UpdateTODO }) =>
+		todosApi.update(id, todo),
+	onSuccess: upsertTodo
+}));
 
-// 表示用: クエリの結果に、登録済みの新項目を足したもの。書き込みで新項目を追加する
+// POST / PATCH の戻り値を id で持つ。表示時にクエリ結果へ上書き・追加する
+// ponytail: ローカルの値が常に勝つ。再取得で priority が振り直された場合も上書きしたままになる
+const localTodosAtom = atom<Record<string, TODO>>({});
+
+// 表示用: クエリの結果にローカルの更新分を反映したもの。書き込みで1件を追加・更新する
 export const todosAtom = atom(
 	(get) => {
 		const query = get(todosQueryAtom);
-		const added = get(addedTodosAtom);
+		const local = get(localTodosAtom);
 
-		if (!query.data || added.length === 0) {
+		if (!query.data || Object.keys(local).length === 0) {
 			return query;
 		}
 
-		const fetched = Object.values(query.data).flat();
+		const fetched = Object.values(query.data)
+			.flat()
+			.map((todo) => local[todo.id] ?? todo);
 		const fetchedIds = new Set(fetched.map(({ id }) => id));
+		const added = Object.values(local).filter(({ id }) => !fetchedIds.has(id));
 
-		return {
-			...query,
-			data: groupTodos(
-				fetched.concat(added.filter(({ id }) => !fetchedIds.has(id)))
-			)
-		};
+		return { ...query, data: groupTodos(fetched.concat(added)) };
 	},
 	(_get, set, todo: TODO) => {
-		set(addedTodosAtom, (prev) => prev.concat(todo));
+		set(localTodosAtom, (prev) => ({ ...prev, [todo.id]: todo }));
 	}
 );

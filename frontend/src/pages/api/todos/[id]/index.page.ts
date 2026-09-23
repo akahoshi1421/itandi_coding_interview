@@ -45,9 +45,10 @@ export default async function handler(
 					? await evaluatePriority(next)
 					: todo.priority;
 
-			const nextTodos = todos.with(index, { ...next, priority });
+			const updated = { ...next, priority };
 
-			res.status(200).json(await db.save(nextTodos));
+			await db.save(todos.with(index, updated));
+			res.status(200).json(updated);
 		}
 	} else if (req.method === "DELETE") {
 		const todos = await db.get();
