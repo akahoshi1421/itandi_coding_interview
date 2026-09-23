@@ -14,7 +14,12 @@ export const useRegistForm = () => {
 			title: ""
 		},
 		onSubmit: async ({ formApi, value }) => {
-			const { content, deadline, title } = taskSchema.parse(value);
+			const { content, deadline, title } = value;
+
+			// validators.onSubmit で弾かれているので実際には通らない。型を Date に絞るためのガード
+			if (!deadline) {
+				return;
+			}
 
 			await createTodo({
 				content,

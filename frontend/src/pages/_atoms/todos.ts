@@ -1,4 +1,5 @@
 import { atom, getDefaultStore } from "jotai";
+import { atomFamily } from "jotai-family";
 import { atomWithMutation, atomWithQuery } from "jotai-tanstack-query";
 import { todosApi } from "../../api/todos";
 import type { TODO, UpdateTODO } from "../../types";
@@ -17,6 +18,14 @@ const upsertTodo = (todo: TODO) => {
 	getDefaultStore().set(todosAtom, todo);
 };
 
+// 詳細ページ用: id ごとの1件取得
+export const todoAtomFamily = atomFamily((id: string) =>
+	atomWithQuery(() => ({
+		queryFn: () => todosApi.get(id),
+		queryKey: [...TODOS_QUERY_KEY, id]
+	}))
+);
+
 export const createTodoAtom = atomWithMutation(() => ({
 	mutationFn: todosApi.create,
 	onSuccess: upsertTodo
@@ -29,7 +38,6 @@ export const updateTodoAtom = atomWithMutation(() => ({
 }));
 
 // POST / PATCH の戻り値を id で持つ。表示時にクエリ結果へ上書き・追加する
-// ponytail: ローカルの値が常に勝つ。再取得で priority が振り直された場合も上書きしたままになる
 const localTodosAtom = atom<Record<string, TODO>>({});
 
 // 表示用: クエリの結果にローカルの更新分を反映したもの。書き込みで1件を追加・更新する

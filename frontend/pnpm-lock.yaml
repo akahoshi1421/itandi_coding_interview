@@ -26,6 +26,9 @@ importers:
       jotai:
         specifier: 3.0.0
         version: 3.0.0(@types/react@19.2.18)(react@19.2.8)
+      jotai-family:
+        specifier: 1.1.0
+        version: 1.1.0(jotai@3.0.0(@types/react@19.2.18)(react@19.2.8))
       jotai-tanstack-query:
         specifier: 0.11.0
         version: 0.11.0(@tanstack/query-core@5.103.2)(@tanstack/react-query@5.103.2(react@19.2.8))(jotai@3.0.0(@types/react@19.2.18)(react@19.2.8))(react@19.2.8)
@@ -2302,6 +2305,12 @@ packages:
   iterator.prototype@1.1.5:
     resolution: {integrity: sha512-H0dkQoCa3b2VEeKQBOxFph+JAbcrQdE7KC0UkqwpLmv2EC4P41QXP+rqo9wYodACiG5/WM5s9oDApTU8utwj9g==}
     engines: {node: '>= 0.4'}
+
+  jotai-family@1.1.0:
+    resolution: {integrity: sha512-T1ACRsLnN5Mu0B8/DIWUW1hW7x1RmpBprm/+CWmUTf4ZZUmIFEQpBJ9PNQtXPjdUD2uu8RvwBxr7nJPdCw5BXg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      jotai: '>=2.9.0'
 
   jotai-tanstack-query@0.11.0:
     resolution: {integrity: sha512-Ys0u0IuuS6/okUJOulFTdCVfVaeKbm1+lKVSN9zHhIxtrAXl9FM4yu7fNvxM6fSz/NCE9tZOKR0MQ3hvplaH8A==}
@@ -5216,6 +5225,10 @@ snapshots:
       get-proto: 1.0.1
       has-symbols: 1.1.0
       set-function-name: 2.0.2
+
+  jotai-family@1.1.0(jotai@3.0.0(@types/react@19.2.18)(react@19.2.8)):
+    dependencies:
+      jotai: 3.0.0(@types/react@19.2.18)(react@19.2.8)
 
   jotai-tanstack-query@0.11.0(@tanstack/query-core@5.103.2)(@tanstack/react-query@5.103.2(react@19.2.8))(jotai@3.0.0(@types/react@19.2.18)(react@19.2.8))(react@19.2.8):
     dependencies:
