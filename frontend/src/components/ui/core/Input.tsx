@@ -4,6 +4,10 @@ import { COLORS } from "../../../consts/colors";
 import { FONT_SIZE } from "../../../consts/fontSize";
 
 export const INPUT_DEFAULT_STYLE: CSSObject = {
+	"&:disabled": {
+		background: COLORS.gray["300"],
+		outlineColor: COLORS.gray["300"]
+	},
 	"&:focus": {
 		outline: "2px solid",
 		outlineColor: COLORS.blue["700"]

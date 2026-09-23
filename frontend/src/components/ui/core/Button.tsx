@@ -4,6 +4,15 @@ import { COLORS } from "../../../consts/colors";
 import { FONT_SIZE } from "../../../consts/fontSize";
 
 const BUTTON_DEFAULT_STYLE: CSSObject = {
+	"&:disabled": {
+		"&:hover": {
+			background: COLORS.gray["300"],
+			borderColor: COLORS.gray["300"]
+		},
+		background: COLORS.gray["300"],
+		borderColor: COLORS.gray["300"],
+		color: "white"
+	},
 	"&:hover": { opacity: 0.7 },
 	borderStyle: "solid",
 	color: COLORS.gray["900"],

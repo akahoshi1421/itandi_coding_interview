@@ -6,6 +6,7 @@ import { Stack } from "./Stack";
 const meta = {
 	args: {
 		checked: false,
+		disabled: false,
 		onChange: fn()
 	},
 	component: CheckBox,
@@ -34,6 +35,18 @@ export const States: Story = {
 			<>
 				<CheckBox />
 				<CheckBox checked readOnly />
+			</>
+		</Stack>
+	)
+};
+
+export const Disabled: Story = {
+	name: "無効",
+	render: () => (
+		<Stack direction="horizontal" gapSize="lg">
+			<>
+				<CheckBox disabled />
+				<CheckBox checked disabled readOnly />
 			</>
 		</Stack>
 	)
