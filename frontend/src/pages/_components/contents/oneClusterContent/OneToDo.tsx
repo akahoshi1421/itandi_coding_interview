@@ -5,6 +5,7 @@ import { Tag } from "../../../../components/ui/core/Tag";
 import { Text } from "../../../../components/ui/core/Text";
 import type { TODO } from "../../../../types";
 import { getToDoTagColor } from "../../../../utils/getToDoTagColor";
+import { useUpdateTodo } from "../../../_hooks/useUpdateTodo";
 
 type OneToDoProps = TODO;
 
@@ -19,6 +20,7 @@ export function OneToDo({
 	updatedAt
 }: OneToDoProps) {
 	const tagColor = getToDoTagColor(priority);
+	const updateTodo = useUpdateTodo();
 
 	return (
 		<Stack
@@ -40,7 +42,12 @@ export function OneToDo({
 				style={{ justifyContent: "space-between", width: "100%" }}
 			>
 				<Tag colorPalette={tagColor}>{`${completed ? "済" : priority}`}</Tag>
-				<CheckBox checked={completed} />
+				<CheckBox
+					checked={completed}
+					onChange={(e) => {
+						void updateTodo(id, { completed: e.target.checked });
+					}}
+				/>
 			</Stack>
 			<Link href={`/todos/${id}`}>
 				<Text fontSize="xl">{title}</Text>

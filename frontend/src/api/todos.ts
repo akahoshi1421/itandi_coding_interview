@@ -24,5 +24,5 @@ export const todosApi = {
 	list: () => request<GroupedTODO>(""),
 	remove: (id: string) => request<undefined>(`/${id}`, "DELETE"),
 	update: (id: string, todo: UpdateTODO) =>
-		request<TODO[]>(`/${id}`, "PATCH", todo)
+		request<TODO>(`/${id}`, "PATCH", todo)
 };
