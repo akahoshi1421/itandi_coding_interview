@@ -1,13 +1,25 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { HttpResponse, http } from "msw";
+import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { makeTodo, resetAppState } from "../../../test/helpers";
 import { server } from "../../../test/server";
 
 const push = vi.fn((url: string) => Promise.resolve(url.length > 0));
+const replace = vi.fn((url: string) => Promise.resolve(url.length > 0));
+
+// 実際の useRouter は同じオブジェクトを返し続けるので、モックも同じにしておく(effect の依存に入るため)
+const router = { push, query: { id: "todo-1" }, replace };
 
 vi.mock("next/router", () => ({
-	useRouter: () => ({ push, query: { id: "todo-1" } })
+	useRouter: () => router
+}));
+
+// next/head は Next の外では何も描画しないので、<head> に直接描画して document.title を確認できるようにする
+vi.mock("next/head", () => ({
+	default: ({ children }: { children: ReactNode }) =>
+		createPortal(children, document.head)
 }));
 
 const todo = makeTodo({
@@ -32,6 +44,7 @@ const renderDetail = async () => {
 beforeEach(() => {
 	resetAppState();
 	push.mockClear();
+	replace.mockClear();
 	server.use(http.get("/api/todos/todo-1", () => HttpResponse.json(todo)));
 });
 
@@ -48,6 +61,31 @@ describe("TODO詳細ページ", () => {
 		expect(screen.getByDisplayValue("元の内容")).toBeInTheDocument();
 		expect(screen.getByDisplayValue("2026-09-30")).toBeInTheDocument();
 		expect(screen.getByText("6.5")).toBeInTheDocument();
+		expect(document.title).toBe("元のタイトル");
+	});
+
+	it("存在しないTODOを開くと、見つからない旨が出てトップページに戻る", async () => {
+		// Arrange
+		server.use(
+			http.get(
+				"/api/todos/todo-1",
+				() => new HttpResponse(null, { status: 404 })
+			)
+		);
+		const { default: App } = await import("../../_app.page");
+		const { default: Page } = await import("./index.page");
+
+		// Act
+		await act(async () => {
+			render(<App Component={Page} pageProps={{}} router={{} as never} />);
+			await Promise.resolve();
+		});
+
+		// Assert
+		expect(
+			await screen.findByText("TODOが見つかりませんでした。")
+		).toBeInTheDocument();
+		expect(replace).toHaveBeenCalledWith("/");
 	});
 
 	it("タイトルを空にして変更すると、入力必須の案内が出て更新されない", async () => {
