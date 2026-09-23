@@ -1,10 +1,22 @@
 import { useAtomValue } from "jotai";
 import type { UpdateTODO } from "../../types";
 import { updateTodoAtom } from "../_atoms/todos";
+import { useShowToast } from "./useToast";
 
-// PATCH する。表示への反映は updateTodoAtom の onSuccess が行う
 export const useUpdateTodo = () => {
 	const { mutateAsync } = useAtomValue(updateTodoAtom);
+	const showToast = useShowToast();
 
-	return (id: string, todo: UpdateTODO) => mutateAsync({ id, todo });
+	return (id: string, todo: UpdateTODO) =>
+		mutateAsync(
+			{ id, todo },
+			{
+				onError: () => {
+					showToast("更新に失敗しました。", "error");
+				},
+				onSuccess: () => {
+					showToast("更新しました。", "success");
+				}
+			}
+		);
 };
