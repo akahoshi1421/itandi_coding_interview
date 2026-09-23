@@ -5,7 +5,7 @@ import type { DateString } from "../../types";
 import { useCreateTodo } from "./useCreateTodo";
 
 export const useRegistForm = () => {
-	const { mutateAsync } = useCreateTodo();
+	const createTodo = useCreateTodo();
 
 	return useForm({
 		defaultValues: {
@@ -16,7 +16,7 @@ export const useRegistForm = () => {
 		onSubmit: async ({ formApi, value }) => {
 			const { content, deadline, title } = taskSchema.parse(value);
 
-			await mutateAsync({
+			await createTodo({
 				content,
 				deadline: format(deadline, "yyyy/MM/dd") as DateString,
 				title

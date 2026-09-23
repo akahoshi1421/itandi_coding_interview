@@ -28,6 +28,7 @@ export function OneToDo({
 				background: "white",
 				borderRadius: "20px",
 				height: "250px",
+				minWidth: "300px",
 				overflowY: "scroll",
 				padding: "20px",
 				scrollbarWidth: "none",

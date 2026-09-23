@@ -8,7 +8,7 @@ import { evaluateAllPriority, evaluatePriority } from "../../../utils/score";
 
 export default async function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<GroupedTODO | TODO[]>
+	res: NextApiResponse<GroupedTODO | TODO>
 ) {
 	if (req.method === "GET") {
 		const dateChanged = await db.touchLastPageAccess();
@@ -24,7 +24,7 @@ export default async function handler(
 	} else if (req.method === "POST") {
 		const { content, deadline, title } = req.body as NewTODO;
 		const priority = await evaluatePriority({ content, deadline, title });
-		const nextTodos = (await db.get()).concat({
+		const todo: TODO = {
 			completed: false,
 			content,
 			createdAt: format(new Date(), "yyyy/MM/dd") as DateString,
@@ -33,9 +33,10 @@ export default async function handler(
 			priority,
 			title,
 			updatedAt: format(new Date(), "yyyy/MM/dd") as DateString
-		});
+		};
 
-		res.status(201).json(await db.save(nextTodos));
+		await db.save((await db.get()).concat(todo));
+		res.status(201).json(todo);
 	} else {
 		res.setHeader("Allow", ["GET", "POST"]);
 		res.status(405).end();

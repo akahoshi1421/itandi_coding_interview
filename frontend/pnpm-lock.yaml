@@ -26,6 +26,9 @@ importers:
       jotai:
         specifier: 3.0.0
         version: 3.0.0(@types/react@19.2.18)(react@19.2.8)
+      jotai-tanstack-query:
+        specifier: 0.11.0
+        version: 0.11.0(@tanstack/query-core@5.103.2)(@tanstack/react-query@5.103.2(react@19.2.8))(jotai@3.0.0(@types/react@19.2.18)(react@19.2.8))(react@19.2.8)
       next:
         specifier: 16.3.2
         version: 16.3.2(@babel/core@7.29.7)(@types/node@26.2.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -2299,6 +2302,19 @@ packages:
   iterator.prototype@1.1.5:
     resolution: {integrity: sha512-H0dkQoCa3b2VEeKQBOxFph+JAbcrQdE7KC0UkqwpLmv2EC4P41QXP+rqo9wYodACiG5/WM5s9oDApTU8utwj9g==}
     engines: {node: '>= 0.4'}
+
+  jotai-tanstack-query@0.11.0:
+    resolution: {integrity: sha512-Ys0u0IuuS6/okUJOulFTdCVfVaeKbm1+lKVSN9zHhIxtrAXl9FM4yu7fNvxM6fSz/NCE9tZOKR0MQ3hvplaH8A==}
+    peerDependencies:
+      '@tanstack/query-core': '*'
+      '@tanstack/react-query': '*'
+      jotai: '>=2.0.0'
+      react: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@tanstack/react-query':
+        optional: true
+      react:
+        optional: true
 
   jotai@3.0.0:
     resolution: {integrity: sha512-KxhbmsJUp/tmrv6aZgO+nzB3H9K8C0xmk5i3aGkwy/EANg73DVBkggv3zVHaAi5PlNlQgTgP4uiVepo+JC+wSA==}
@@ -5200,6 +5216,14 @@ snapshots:
       get-proto: 1.0.1
       has-symbols: 1.1.0
       set-function-name: 2.0.2
+
+  jotai-tanstack-query@0.11.0(@tanstack/query-core@5.103.2)(@tanstack/react-query@5.103.2(react@19.2.8))(jotai@3.0.0(@types/react@19.2.18)(react@19.2.8))(react@19.2.8):
+    dependencies:
+      '@tanstack/query-core': 5.103.2
+      jotai: 3.0.0(@types/react@19.2.18)(react@19.2.8)
+    optionalDependencies:
+      '@tanstack/react-query': 5.103.2(react@19.2.8)
+      react: 19.2.8
 
   jotai@3.0.0(@types/react@19.2.18)(react@19.2.8):
     optionalDependencies:
