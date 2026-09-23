@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { useRouter } from "next/router";
 import { Button } from "../../../../components/ui/core/Button";
 import { Input } from "../../../../components/ui/core/Input";
 import { InputDate } from "../../../../components/ui/core/InputDate";
@@ -7,6 +8,7 @@ import { Tag } from "../../../../components/ui/core/Tag";
 import { Text } from "../../../../components/ui/core/Text";
 import { TextArea } from "../../../../components/ui/core/TextArea";
 import { getToDoTagColor } from "../../../../utils/getToDoTagColor";
+import { useDeleteTodo } from "../../../_hooks/useDeleteTodo";
 import { useEditForm } from "../../../_hooks/useEditForm";
 import { useTodo } from "../../../_hooks/useTodo";
 import { OneInput } from "./oneInput/OneInput";
@@ -14,6 +16,8 @@ import { OneInput } from "./oneInput/OneInput";
 export function EditForm({ id }: { id: string }) {
 	const { data: todo, error, isPending } = useTodo(id);
 	const form = useEditForm(id, todo);
+	const { deleteTodo, isDeleting } = useDeleteTodo();
+	const router = useRouter();
 
 	if (error) {
 		return <Text>TODOの取得に失敗しました。</Text>;
@@ -106,7 +110,11 @@ export function EditForm({ id }: { id: string }) {
 				</form.Field>
 				<Stack direction="horizontal" style={{ alignItems: "center" }}>
 					<Button
-						disabled={isPending}
+						disabled={isPending || isDeleting}
+						onClick={async () => {
+							await deleteTodo(id);
+							await router.push("/");
+						}}
 						size="xl"
 						style={{ width: "150px" }}
 						variant="outline"

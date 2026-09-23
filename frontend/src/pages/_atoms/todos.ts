@@ -37,8 +37,15 @@ export const updateTodoAtom = atomWithMutation(() => ({
 	onSuccess: upsertTodo
 }));
 
-// POST / PATCH の戻り値を id で持つ。表示時にクエリ結果へ上書き・追加する
-const localTodosAtom = atom<Record<string, TODO>>({});
+export const deleteTodoAtom = atomWithMutation(() => ({
+	mutationFn: todosApi.remove,
+	onSuccess: (_result, id) => {
+		getDefaultStore().set(localTodosAtom, (prev) => ({ ...prev, [id]: null }));
+	}
+}));
+
+// POST / PATCH の戻り値を id で持つ(null は DELETE 済み)。表示時にクエリ結果へ上書き・追加・除外する
+const localTodosAtom = atom<Partial<Record<string, TODO | null>>>({});
 
 // 表示用: クエリの結果にローカルの更新分を反映したもの。書き込みで1件を追加・更新する
 export const todosAtom = atom(
@@ -52,9 +59,15 @@ export const todosAtom = atom(
 
 		const fetched = Object.values(query.data)
 			.flat()
-			.map((todo) => local[todo.id] ?? todo);
+			.flatMap((todo) => {
+				const override = local[todo.id];
+
+				return override === null ? [] : [override ?? todo];
+			});
 		const fetchedIds = new Set(fetched.map(({ id }) => id));
-		const added = Object.values(local).filter(({ id }) => !fetchedIds.has(id));
+		const added = Object.values(local).filter(
+			(todo): todo is TODO => !!todo && !fetchedIds.has(todo.id)
+		);
 
 		return { ...query, data: groupTodos(fetched.concat(added)) };
 	},
