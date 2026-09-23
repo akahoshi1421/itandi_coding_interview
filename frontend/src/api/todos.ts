@@ -1,5 +1,14 @@
 import type { GroupedTODO, NewTODO, TODO, UpdateTODO } from "../types";
 
+export class ApiError extends Error {
+	constructor(
+		readonly status: number,
+		message: string
+	) {
+		super(message);
+	}
+}
+
 const request = async <T>(
 	path: string,
 	method: "GET" | "POST" | "PATCH" | "DELETE" = "GET",
@@ -12,7 +21,10 @@ const request = async <T>(
 	});
 
 	if (!res.ok) {
-		throw new Error(`${method} /api/todos${path} -> ${res.status}`);
+		throw new ApiError(
+			res.status,
+			`${method} /api/todos${path} -> ${res.status}`
+		);
 	}
 
 	return res.status === 204 ? (undefined as T) : ((await res.json()) as T);

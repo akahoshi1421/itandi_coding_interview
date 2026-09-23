@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import Head from "next/head";
 import { Button } from "../../../../components/ui/core/Button";
 import { Input } from "../../../../components/ui/core/Input";
 import { InputDate } from "../../../../components/ui/core/InputDate";
@@ -28,6 +29,9 @@ export function EditForm({ id }: { id: string }) {
 				void form.handleSubmit();
 			}}
 		>
+			<Head>
+				<title>{todo?.title ?? "Jev Jam"}</title>
+			</Head>
 			<Stack
 				direction="vertical"
 				gapSize="2xl"

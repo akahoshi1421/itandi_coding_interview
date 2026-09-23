@@ -4,11 +4,14 @@ import { HttpResponse, http } from "msw";
 import { makeTodo, resetAppState } from "../test/helpers";
 import { server } from "../test/server";
 
+const router = {
+	push: vi.fn((url: string) => Promise.resolve(url.length > 0)),
+	query: {},
+	replace: vi.fn((url: string) => Promise.resolve(url.length > 0))
+};
+
 vi.mock("next/router", () => ({
-	useRouter: () => ({
-		push: vi.fn((url: string) => Promise.resolve(url.length > 0)),
-		query: {}
-	})
+	useRouter: () => router
 }));
 
 const renderTop = async () => {

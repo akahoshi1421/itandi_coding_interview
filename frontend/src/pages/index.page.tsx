@@ -7,11 +7,8 @@ export default function Page() {
 	return (
 		<>
 			<Head>
-				<title>Crazy TODO App</title>
-				<meta
-					content="Crazy TODO App for Conding Interview"
-					name="description"
-				/>
+				<title>Jev Jam</title>
+				<meta content="Jev Jam" name="description" />
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
 			</Head>
 			<Stack
