@@ -19,7 +19,7 @@ const request = async <T>(
 };
 
 export const todosApi = {
-	create: (todo: NewTODO) => request<TODO[]>("", "POST", todo),
+	create: (todo: NewTODO) => request<TODO>("", "POST", todo),
 	get: (id: string) => request<TODO>(`/${id}`),
 	list: () => request<GroupedTODO>(""),
 	remove: (id: string) => request<undefined>(`/${id}`, "DELETE"),
