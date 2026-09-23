@@ -21,7 +21,7 @@ const BUTTON_DEFAULT_STYLE: CSSObject = {
 	outline: "0px"
 };
 
-const BUTTON_SIZE: Record<string, CSSObject> = {
+const BUTTON_SIZE: Record<"lg" | "md" | "xl", CSSObject> = {
 	"lg": {
 		borderRadius: "10px",
 		fontSize: FONT_SIZE.lg,
@@ -39,7 +39,7 @@ const BUTTON_SIZE: Record<string, CSSObject> = {
 	}
 };
 
-const BUTTON_VARIANT: Record<string, CSSObject> = {
+const BUTTON_VARIANT: Record<"outline" | "plain" | "solid", CSSObject> = {
 	"outline": {
 		"&:hover": {
 			"background": COLORS.blue["400"],
@@ -63,8 +63,8 @@ const BUTTON_VARIANT: Record<string, CSSObject> = {
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: string;
-	size?: "md" | "lg" | "xl";
-	variant?: "outline" | "solid" | "plain";
+	size?: keyof typeof BUTTON_SIZE;
+	variant?: keyof typeof BUTTON_VARIANT;
 };
 
 export function Button({ children, variant, size, ...props }: ButtonProps) {
