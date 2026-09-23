@@ -1,4 +1,4 @@
 import { useAtomValue } from "jotai";
-import { todoAtomFor } from "../_atoms/todos";
+import { todoAtomFamily } from "../_atoms/todos";
 
-export const useTodo = (id: string) => useAtomValue(todoAtomFor(id));
+export const useTodo = (id: string) => useAtomValue(todoAtomFamily(id));

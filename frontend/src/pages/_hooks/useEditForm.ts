@@ -18,7 +18,12 @@ export const useEditForm = (id: string, todo: TODO | undefined) => {
 	return useForm({
 		defaultValues,
 		onSubmit: async ({ value }) => {
-			const { content, deadline, title } = taskSchema.parse(value);
+			const { content, deadline, title } = value;
+
+			// validators.onSubmit で弾かれているので実際には通らない。型を Date に絞るためのガード
+			if (!deadline) {
+				return;
+			}
 
 			await updateTodo(id, {
 				content,

@@ -1,4 +1,5 @@
 import { atom, getDefaultStore } from "jotai";
+import { atomFamily } from "jotai-family";
 import { atomWithMutation, atomWithQuery } from "jotai-tanstack-query";
 import { todosApi } from "../../api/todos";
 import type { TODO, UpdateTODO } from "../../types";
@@ -17,27 +18,13 @@ const upsertTodo = (todo: TODO) => {
 	getDefaultStore().set(todosAtom, todo);
 };
 
-// 詳細ページ用: id ごとの1件取得。同じ id には同じ atom を返す(jotai 3 に atomFamily が無いので Map で代用)
-const todoAtoms = new Map<string, ReturnType<typeof createTodoAtomFor>>();
-const createTodoAtomFor = (id: string) =>
+// 詳細ページ用: id ごとの1件取得
+export const todoAtomFamily = atomFamily((id: string) =>
 	atomWithQuery(() => ({
 		queryFn: () => todosApi.get(id),
 		queryKey: [...TODOS_QUERY_KEY, id]
-	}));
-
-export const todoAtomFor = (id: string) => {
-	const existing = todoAtoms.get(id);
-
-	if (existing) {
-		return existing;
-	}
-
-	const created = createTodoAtomFor(id);
-
-	todoAtoms.set(id, created);
-
-	return created;
-};
+	}))
+);
 
 export const createTodoAtom = atomWithMutation(() => ({
 	mutationFn: todosApi.create,
