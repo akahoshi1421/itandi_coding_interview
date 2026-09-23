@@ -4,11 +4,11 @@ import { updateTodoAtom } from "../_atoms/todos";
 import { useShowToast } from "./useToast";
 
 export const useUpdateTodo = () => {
-	const { mutateAsync } = useAtomValue(updateTodoAtom);
+	const { isPending, mutate } = useAtomValue(updateTodoAtom);
 	const showToast = useShowToast();
 
-	return (id: string, todo: UpdateTODO) =>
-		mutateAsync(
+	const updateTodo = (id: string, todo: UpdateTODO, onSuccess?: () => void) => {
+		mutate(
 			{ id, todo },
 			{
 				onError: () => {
@@ -16,7 +16,11 @@ export const useUpdateTodo = () => {
 				},
 				onSuccess: () => {
 					showToast("更新しました。", "success");
+					onSuccess?.();
 				}
 			}
 		);
+	};
+
+	return { isUpdating: isPending, updateTodo };
 };

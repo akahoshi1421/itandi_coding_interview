@@ -8,7 +8,7 @@ import { useRegistForm } from "../_hooks/useRegistForm";
 import { OneInput } from "./registForm/OneInput";
 
 export function RegistForm() {
-	const form = useRegistForm();
+	const { form, isCreating } = useRegistForm();
 
 	return (
 		<form
@@ -107,7 +107,7 @@ export function RegistForm() {
 					<form.Subscribe selector={(state) => state.isSubmitting}>
 						{(isSubmitting) => (
 							<Button
-								disabled={isSubmitting}
+								disabled={isSubmitting || isCreating}
 								size="lg"
 								style={{ width: "150px" }}
 								type="submit"

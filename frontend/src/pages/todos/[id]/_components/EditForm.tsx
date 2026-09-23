@@ -14,7 +14,7 @@ import { OneInput } from "./oneInput/OneInput";
 
 export function EditForm({ id }: { id: string }) {
 	const { data: todo, error, isPending } = useTodo(id);
-	const form = useEditForm(id, todo);
+	const { form, isUpdating } = useEditForm(id, todo);
 	const { deleteTodo, isDeleting } = useDeleteTodo();
 
 	if (error) {
@@ -110,7 +110,7 @@ export function EditForm({ id }: { id: string }) {
 					<Button
 						disabled={isPending || isDeleting}
 						onClick={() => {
-							void deleteTodo(id);
+							deleteTodo(id);
 						}}
 						size="xl"
 						style={{ width: "150px" }}
@@ -121,7 +121,7 @@ export function EditForm({ id }: { id: string }) {
 					<form.Subscribe selector={(state) => state.isSubmitting}>
 						{(isSubmitting) => (
 							<Button
-								disabled={isPending || isSubmitting}
+								disabled={isPending || isSubmitting || isUpdating}
 								size="xl"
 								style={{ width: "150px" }}
 								type="submit"

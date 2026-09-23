@@ -5,15 +5,15 @@ import type { DateString } from "../../types";
 import { useCreateTodo } from "./useCreateTodo";
 
 export const useRegistForm = () => {
-	const createTodo = useCreateTodo();
+	const { createTodo, isCreating } = useCreateTodo();
 
-	return useForm({
+	const form = useForm({
 		defaultValues: {
 			content: "",
 			deadline: undefined as Date | undefined,
 			title: ""
 		},
-		onSubmit: async ({ formApi, value }) => {
+		onSubmit: ({ formApi, value }) => {
 			const { content, deadline, title } = value;
 
 			// validators.onSubmit で弾かれているので実際には通らない。型を Date に絞るためのガード
@@ -21,15 +21,21 @@ export const useRegistForm = () => {
 				return;
 			}
 
-			await createTodo({
-				content,
-				deadline: format(deadline, "yyyy/MM/dd") as DateString,
-				title
-			});
-			formApi.reset();
+			createTodo(
+				{
+					content,
+					deadline: format(deadline, "yyyy/MM/dd") as DateString,
+					title
+				},
+				() => {
+					formApi.reset();
+				}
+			);
 		},
 		validators: {
 			onSubmit: taskSchema
 		}
 	});
+
+	return { form, isCreating };
 };

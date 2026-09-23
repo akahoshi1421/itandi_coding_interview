@@ -12,6 +12,7 @@
 		"prepare": "cd .. && husky frontend/.husky",
 		"start": "next start",
 		"storybook": "storybook dev -p 6006",
+		"test": "vitest run",
 		"tsc": "tsc"
 	},
 	"lint-staged": {
@@ -45,9 +46,13 @@
 		"@storybook/addon-onboarding": "10.6.0",
 		"@storybook/addon-vitest": "10.6.0",
 		"@storybook/nextjs-vite": "10.6.0",
+		"@testing-library/jest-dom": "7.0.1",
+		"@testing-library/react": "16.3.3",
+		"@testing-library/user-event": "14.6.7",
 		"@types/node": "26.2.0",
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
+		"@vitejs/plugin-react": "6.1.1",
 		"babel-plugin-react-compiler": "1.0.0",
 		"eslint": "10.9.0",
 		"eslint-plugin-react": "7.37.5",
@@ -56,11 +61,14 @@
 		"eslint-plugin-storybook": "10.6.0",
 		"globals": "17.11.0",
 		"husky": "9.1.7",
+		"jsdom": "30.1.1",
 		"lint-staged": "17.5.1",
+		"msw": "2.15.0",
 		"storybook": "10.6.0",
 		"typescript": "npm:@typescript/typescript6@6.0.2",
 		"typescript-eslint": "8.67.0",
-		"typescript7": "npm:typescript@7.0.2"
+		"typescript7": "npm:typescript@7.0.2",
+		"vitest": "5.0.1"
 	},
 	"devEngines": {
 		"packageManager": {
