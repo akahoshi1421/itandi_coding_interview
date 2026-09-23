@@ -20,7 +20,7 @@ export function OneToDo({
 	updatedAt
 }: OneToDoProps) {
 	const tagColor = getToDoTagColor(priority);
-	const updateTodo = useUpdateTodo();
+	const { updateTodo } = useUpdateTodo();
 
 	return (
 		<Stack
@@ -45,7 +45,7 @@ export function OneToDo({
 				<CheckBox
 					checked={completed}
 					onChange={(e) => {
-						void updateTodo(id, { completed: e.target.checked });
+						updateTodo(id, { completed: e.target.checked });
 					}}
 				/>
 			</Stack>

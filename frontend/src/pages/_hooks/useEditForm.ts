@@ -7,7 +7,7 @@ import { useUpdateTodo } from "./useUpdateTodo";
 
 // todo が未取得(undefined)の間は空のフォーム。取得できたら defaultValues の変更で値が入る(未入力の間だけ)
 export const useEditForm = (id: string, todo: TODO | undefined) => {
-	const updateTodo = useUpdateTodo();
+	const { isUpdating, updateTodo } = useUpdateTodo();
 	const router = useRouter();
 	const defaultValues: { content: string; deadline?: Date; title: string } = {
 		content: todo?.content ?? "",
@@ -15,9 +15,9 @@ export const useEditForm = (id: string, todo: TODO | undefined) => {
 		title: todo?.title ?? ""
 	};
 
-	return useForm({
+	const form = useForm({
 		defaultValues,
-		onSubmit: async ({ value }) => {
+		onSubmit: ({ value }) => {
 			const { content, deadline, title } = value;
 
 			// validators.onSubmit で弾かれているので実際には通らない。型を Date に絞るためのガード
@@ -25,20 +25,22 @@ export const useEditForm = (id: string, todo: TODO | undefined) => {
 				return;
 			}
 
-			try {
-				await updateTodo(id, {
+			updateTodo(
+				id,
+				{
 					content,
 					deadline: format(deadline, "yyyy/MM/dd") as DateString,
 					title
-				});
-			} catch {
-				return;
-			}
-
-			await router.push("/");
+				},
+				() => {
+					void router.push("/");
+				}
+			);
 		},
 		validators: {
 			onSubmit: taskSchema
 		}
 	});
+
+	return { form, isUpdating };
 };

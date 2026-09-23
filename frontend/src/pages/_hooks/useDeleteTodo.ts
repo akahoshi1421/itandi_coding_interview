@@ -4,25 +4,20 @@ import { deleteTodoAtom } from "../_atoms/todos";
 import { useShowToast } from "./useToast";
 
 export const useDeleteTodo = () => {
-	const { isPending, mutateAsync } = useAtomValue(deleteTodoAtom);
+	const { isPending, mutate } = useAtomValue(deleteTodoAtom);
 	const showToast = useShowToast();
 	const router = useRouter();
 
-	const deleteTodo = async (id: string) => {
-		try {
-			await mutateAsync(id, {
-				onError: () => {
-					showToast("削除に失敗しました。", "error");
-				},
-				onSuccess: () => {
-					showToast("削除しました。", "success");
-				}
-			});
-		} catch {
-			return;
-		}
-
-		await router.push("/");
+	const deleteTodo = (id: string) => {
+		mutate(id, {
+			onError: () => {
+				showToast("削除に失敗しました。", "error");
+			},
+			onSuccess: () => {
+				showToast("削除しました。", "success");
+				void router.push("/");
+			}
+		});
 	};
 
 	return { deleteTodo, isDeleting: isPending };
