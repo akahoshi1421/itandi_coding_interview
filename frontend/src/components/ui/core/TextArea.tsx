@@ -9,7 +9,7 @@ const TEXT_AREA_SIZE = INPUT_SIZE;
 
 type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	invalid?: boolean;
-	size?: "md" | "lg" | "xl";
+	size?: keyof typeof TEXT_AREA_SIZE;
 };
 
 export function TextArea({ invalid, size, ...props }: TextAreaProps) {

@@ -23,7 +23,7 @@ export const INPUT_INVALID_STYLE: CSSObject = {
 	outlineColor: COLORS.red["400"]
 };
 
-export const INPUT_SIZE: Record<string, CSSObject> = {
+export const INPUT_SIZE: Record<"lg" | "md" | "xl", CSSObject> = {
 	"lg": {
 		fontSize: FONT_SIZE.lg,
 		padding: "15px 10px"
@@ -40,7 +40,7 @@ export const INPUT_SIZE: Record<string, CSSObject> = {
 
 export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
 	invalid?: boolean;
-	size?: "md" | "lg" | "xl";
+	size?: keyof typeof INPUT_SIZE;
 	width?: string;
 };
 

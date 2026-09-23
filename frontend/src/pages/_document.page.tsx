@@ -5,7 +5,14 @@ export default function Document() {
 	return (
 		<Html lang="ja">
 			<Head />
-			<body css={{ background: COLORS.gray["100"], margin: 0, padding: 0 }}>
+			<body
+				css={{
+					background: COLORS.gray["100"],
+					margin: 0,
+					overflowX: "hidden",
+					padding: 0
+				}}
+			>
 				<Main />
 				<NextScript />
 			</body>
