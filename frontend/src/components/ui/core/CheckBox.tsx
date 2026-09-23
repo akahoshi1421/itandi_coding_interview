@@ -27,6 +27,10 @@ const CHECKBOX_DEFAULT_STYLE: CSSObject = {
 		background: COLORS.blue["400"],
 		position: "relative"
 	},
+	"&:disabled": {
+		background: COLORS.gray["300"],
+		borderColor: COLORS.gray["300"]
+	},
 	"&:hover": {
 		opacity: "0.8"
 	},

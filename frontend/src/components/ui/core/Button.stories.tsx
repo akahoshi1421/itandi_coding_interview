@@ -6,6 +6,7 @@ import { Stack } from "./Stack";
 const meta = {
 	args: {
 		children: "ボタン",
+		disabled: false,
 		onClick: fn(),
 		size: "md",
 		variant: "outline"
@@ -48,6 +49,21 @@ export const Variants: Story = {
 			<>
 				{(["outline", "solid", "plain"] as const).map((variant) => (
 					<Button key={variant} variant={variant}>
+						{variant}
+					</Button>
+				))}
+			</>
+		</Stack>
+	)
+};
+
+export const Disabled: Story = {
+	name: "無効",
+	render: () => (
+		<Stack direction="horizontal" gapSize="xl">
+			<>
+				{(["outline", "solid", "plain"] as const).map((variant) => (
+					<Button disabled key={variant} variant={variant}>
 						{variant}
 					</Button>
 				))}
