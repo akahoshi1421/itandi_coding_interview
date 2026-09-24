@@ -18,7 +18,8 @@ const createDB = () => {
 	};
 
 	const write = async (store: Store) => {
-		await fs.writeFile(todosJsonPath, JSON.stringify(store));
+		// biome のフォーマット(タブ・末尾改行)に合わせて書き出し、pnpm biome が落ちないようにする
+		await fs.writeFile(todosJsonPath, `${JSON.stringify(store, null, "\t")}\n`);
 	};
 
 	const save = async (todos: TODO[]) => {
